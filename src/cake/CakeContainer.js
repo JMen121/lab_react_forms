@@ -3,6 +3,7 @@ import Cake from "./Cake.js";
 
 const CakeContainer = () => {
 
+	
     const [listOfCakes, setListOfCakes] = useState(
 		[
 			{
@@ -16,7 +17,8 @@ const CakeContainer = () => {
 					  "milk"
 				  ],
 				  price: 5,
-				   rating: 5
+				   rating: 5,
+				   id: 1
 			},
 			{
 				 cakeName: "Tea Loaf",
@@ -29,7 +31,8 @@ const CakeContainer = () => {
 					  "strong tea",
 				  ],
 				  price: 2,
-				  rating: 3
+				  rating: 3,
+				  id: 2,
 			},
 			{
 				 cakeName: "Carrot Cake",
@@ -42,18 +45,18 @@ const CakeContainer = () => {
 					  "sugar",
 				   ],
 				   price: 8,
-				   rating: 5
+				   rating: 5,
+				   id: 3,
 			} 
 		]		
 	)
 
-  return (
-    <>
-        <Cake />
-        <Cake />
-        <Cake />
-    </>
-  )
+	
+const cakeLoop = listOfCakes.map(cake =>{
+	return<Cake cake = {cake} key={cake.id} />
+})
+return(cakeLoop)
+
 }
 
 export default CakeContainer;
