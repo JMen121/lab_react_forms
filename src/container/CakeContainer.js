@@ -1,5 +1,8 @@
 import { useState } from "react";
-import Cake from "../components/Cake";
+import CakeForm from "../cake/CakeForm"
+import CakeList from "../cake/CakeList"
+
+
 const CakeContainer = () => {
 
 	
@@ -49,13 +52,23 @@ const CakeContainer = () => {
 			} 
 		]		
 	)
+   
 
-	
-const cakeLoop = listOfCakes.map(cake =>{
-	return<Cake cake = {cake} key={cake.id} />
-})
-return(cakeLoop)
+    const handleNewCake = (newCake) =>{
+		const updatedCakes = [...listOfCakes];
+		updatedCakes.push(newCake);
+		setListOfCakes(updatedCakes);
+	}
+	return(
+		<>
+		<h1>Cake Directory</h1>
+		
+		<CakeForm newCakeOnSubmission = {handleNewCake}/>
+		<hr />
+		<CakeList listOfCakes= {listOfCakes} />
+		</>
 
+	)
 }
 
 export default CakeContainer;

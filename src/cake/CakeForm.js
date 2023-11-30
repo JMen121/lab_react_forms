@@ -25,21 +25,22 @@ const CakeForm =({newCakeOnSubmission}) => {
         event.preventDefault();
     
 
-        if (!name || !ingredients || !price){
+        if (!newCakeName || !newCakeIngredients || !newCakePrice){
             alert("Need to complete all details listed");
             return;
         }
 
         const newCake = {
-            newCakeName : newCakeName,
-            newCakeIngredients: newCakeIngredients,
-            newCakePrice: newCakePrice
+            cakeName : newCakeName,
+            ingredients:newCakeIngredients.split(","),
+            price: newCakePrice
+            //spilts the newCakeIngredients string whenever it finds a comma
         }
+        //cakeName is the Object's parameter name
 
         setNewCakeName("");
         setNewCakeIngredients("");
         setNewCakePrice("");
-        
         newCakeOnSubmission(newCake);
 
     }
@@ -55,23 +56,26 @@ const CakeForm =({newCakeOnSubmission}) => {
                     onInput={(event) => updateCakeName(event)}
                     value = {newCakeName}
                 />
+
+                <label htmlFor="cakeIngredients-input">Ingredients: </label>
+                <input
+                    type = "text"
+                    id = "cakeIngredients-input"
+                    onInput={(event) => updateCakeIngredients(event)}
+                    value = {newCakeIngredients}
+                />
+
+                 <label htmlFor="cakePrice-input">Price: £ </label>
+                <input
+                    type = "text"
+                    id = "cakePrice-input"
+                    onInput={(event) => updateCakePrice(event)}
+                    value = {newCakePrice}
+                />  
+                <input type ="submit" value="Add New Cake"/>
             </form>
         </section>
     )
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+ export default CakeForm;

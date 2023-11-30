@@ -1,6 +1,5 @@
 const Cake = ({cake}) => {
-
-
+ console.log(cake);
   return(
     <div className="cake">
         <h3>{cake.cakeName}</h3>
